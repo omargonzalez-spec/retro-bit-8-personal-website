@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar — Faith, Leadership, People, Purpose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0d0d1a;
+    --navy:#1a1c2c;
+    --navy-deep:#0f1020;
+    --purple:#5d275d;
+    --brown:#ab5236;
+    --gray:#5f574f;
+    --silver:#c2c3c7;
+    --cream:#fff1e8;
+    --red:#ff004d;
+    --orange:#ffa300;
+    --yellow:#ffec27;
+    --green:#00e436;
+    --cyan:#29adff;
+    --pink:#ff77a8;
+    --line:#83769c;
+    --shadow:#000000;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--cream);
+    font-family:'VT323', monospace;
+    font-size:22px;
+    line-height:1.45;
+    image-rendering:pixelated;
+    -webkit-font-smoothing:none;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:9999; pointer-events:none;
+    background:repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.12) 2px,
+      rgba(0,0,0,0.12) 4px
+    );
+  }
+  h1,h2,h3,.display,.brand,.eyebrow,.btn,.cornerstone .num,.trait-list .tag{
+    font-family:'Press Start 2P', monospace;
+    font-weight:400;
+    letter-spacing:0;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  section{padding:80px 0; position:relative;}
+
+  .pixel-box{
+    border:4px solid var(--cream);
+    box-shadow:
+      4px 4px 0 var(--shadow),
+      inset -4px -4px 0 rgba(0,0,0,0.3),
+      inset 4px 4px 0 rgba(255,255,255,0.08);
+  }
+  .pixel-box-dark{
+    border:4px solid var(--line);
+    box-shadow:4px 4px 0 var(--shadow);
+  }
+
+  .eyebrow{
+    text-transform:uppercase;
+    font-size:0.55rem;
+    color:var(--yellow);
+    display:block;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{content:"► ";}
+  .eyebrow::after{content:" ◄";}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:var(--navy);
+    border-bottom:4px solid var(--cyan);
+    box-shadow:0 4px 0 var(--shadow);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{
+    color:var(--cream); font-size:0.7rem;
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand .mark{
+    width:16px; height:16px; background:var(--red);
+    border:2px solid var(--cream);
+    box-shadow:2px 2px 0 var(--shadow);
+    display:inline-block;
+    animation:blink 1.2s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  .navlinks{display:flex; gap:8px; list-style:none; flex-wrap:wrap; justify-content:flex-end;}
+  .navlinks a{
+    color:var(--silver); font-size:0.45rem; text-decoration:none;
+    padding:8px 10px;
+    border:2px solid transparent;
+    transition:none;
+  }
+  .navlinks a:hover{
+    color:var(--yellow);
+    border-color:var(--yellow);
+    background:var(--navy-deep);
+  }
+  @media(max-width:720px){
+    .navlinks{gap:4px;}
+    .navlinks a{font-size:0.38rem; padding:6px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--navy-deep);
+    color:var(--cream);
+    padding:160px 0 80px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:4px solid var(--purple);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, var(--line) 1px, transparent 1px),
+      linear-gradient(var(--line) 1px, transparent 1px);
+    background-size:16px 16px;
+    opacity:0.25;
+  }
+  .hero-stars{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+  }
+  .hero-stars span{
+    position:absolute; width:4px; height:4px; background:var(--cream);
+    animation:twinkle 2s step-end infinite;
+  }
+  .hero-stars span:nth-child(1){top:12%;left:8%;animation-delay:0s;}
+  .hero-stars span:nth-child(2){top:22%;left:72%;animation-delay:0.4s;background:var(--cyan);}
+  .hero-stars span:nth-child(3){top:55%;left:90%;animation-delay:0.8s;}
+  .hero-stars span:nth-child(4){top:8%;left:45%;animation-delay:1.2s;background:var(--yellow);}
+  .hero-stars span:nth-child(5){top:70%;left:15%;animation-delay:0.6s;background:var(--pink);}
+  @keyframes twinkle{50%{opacity:0.2;}}
+  .hero-inner{position:relative; z-index:2; max-width:640px;}
+  .hero .eyebrow{color:var(--cyan); font-size:0.5rem;}
+  .hero h1{
+    font-size:clamp(0.85rem, 2.8vw, 1.15rem);
+    margin-bottom:24px;
+    text-shadow:3px 3px 0 var(--red);
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--yellow);
+    display:block; margin-top:8px;
+  }
+  .hero p.lede{
+    font-size:1.35rem;
+    color:var(--silver);
+    max-width:520px;
+    margin-bottom:32px;
+    border-left:4px solid var(--green);
+    padding-left:16px;
+  }
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center;
+    padding:12px 16px;
+    font-size:0.5rem;
+    text-decoration:none;
+    border:4px solid var(--cream);
+    box-shadow:4px 4px 0 var(--shadow);
+    transition:none;
+    cursor:pointer;
+  }
+  .btn:active{
+    transform:translate(4px,4px);
+    box-shadow:none;
+  }
+  .btn-primary{background:var(--red); color:var(--cream);}
+  .btn-primary:hover{background:var(--orange);}
+  .btn-ghost{background:var(--navy); color:var(--cyan); border-color:var(--cyan);}
+  .btn-ghost:hover{background:var(--purple); color:var(--yellow); border-color:var(--yellow);}
+  .hero-sprite{
+    position:absolute; right:24px; top:50%; transform:translateY(-50%);
+    z-index:2; text-align:center;
+  }
+  .hero-sprite canvas{display:block; image-rendering:pixelated;}
+  .hero-sprite .label{
+    font-size:0.4rem; color:var(--cyan); margin-top:8px;
+  }
+  @media(max-width:900px){.hero-sprite{display:none;}}
+
+  /* ---------- STORY ---------- */
+  .story{background:var(--cream); color:var(--navy);}
+  .story-grid{
+    display:grid; grid-template-columns:0.85fr 1.5fr; gap:40px; align-items:start;
+  }
+  @media(max-width:840px){.story-grid{grid-template-columns:1fr; gap:32px;}}
+  .story h2{font-size:0.85rem; margin-bottom:8px; color:var(--purple);}
+  .story .eyebrow{color:var(--red);}
+  .story-copy{
+    background:var(--navy);
+    color:var(--cream);
+    padding:24px;
+    border:4px solid var(--navy-deep);
+    box-shadow:6px 6px 0 var(--gray);
+  }
+  .story-copy p{margin-bottom:18px; font-size:1.2rem; color:var(--silver);}
+  .story-copy p:first-of-type::first-letter{
+    font-family:'Press Start 2P', monospace;
+    font-size:2rem; float:left; line-height:1;
+    padding-right:10px; padding-top:4px; color:var(--yellow);
+  }
+  .pull{
+    border:4px solid var(--yellow);
+    padding:16px;
+    font-size:1.15rem;
+    color:var(--yellow);
+    margin:24px 0;
+    background:var(--navy-deep);
+    box-shadow:4px 4px 0 var(--shadow);
+  }
+  .pull::before{content:"[ NPC SAYS ] "; font-size:0.45rem; color:var(--cyan); display:block; margin-bottom:8px;}
+
+  /* ---------- VALUES ---------- */
+  .stand{background:var(--navy); color:var(--cream);}
+  .stand-head{max-width:600px; margin-bottom:48px;}
+  .stand-head .eyebrow{color:var(--green);}
+  .stand-head h2{font-size:0.85rem; margin-top:8px; text-shadow:2px 2px 0 var(--purple);}
+  .cornerstones{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  }
+  @media(max-width:900px){.cornerstones{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.cornerstones{grid-template-columns:1fr;}}
+  .cornerstone{
+    background:var(--navy-deep);
+    border:4px solid var(--line);
+    padding:20px 16px;
+    box-shadow:4px 4px 0 var(--shadow);
+    transition:none;
+  }
+  .cornerstone:hover{
+    border-color:var(--yellow);
+    transform:translate(-2px,-2px);
+    box-shadow:6px 6px 0 var(--shadow);
+  }
+  .cornerstone .num{
+    color:var(--cyan); font-size:0.45rem; display:block; margin-bottom:12px;
+  }
+  .cornerstone h3{font-size:0.55rem; margin-bottom:10px; color:var(--yellow);}
+  .cornerstone p{font-size:1.05rem; color:var(--silver);}
+
+  /* ---------- BRING TO TABLE ---------- */
+  .table-section{background:var(--brown); color:var(--cream);}
+  .table-head{max-width:600px; margin-bottom:40px;}
+  .table-head .eyebrow{color:var(--yellow);}
+  .table-head h2{font-size:0.85rem; text-shadow:2px 2px 0 var(--shadow);}
+  .strengths{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+  }
+  @media(max-width:800px){.strengths{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.strengths{grid-template-columns:1fr;}}
+  .strength{
+    background:var(--navy-deep);
+    border:4px solid var(--cream);
+    padding:20px 16px; min-height:140px;
+    box-shadow:4px 4px 0 var(--shadow);
+  }
+  .strength .mark{color:var(--green); font-size:1rem; font-family:'Press Start 2P',monospace;}
+  .strength p{font-size:1.1rem; margin-top:12px; color:var(--silver);}
+
+  /* ---------- PEOPLE & BUSINESS ---------- */
+  .business{background:var(--green); color:var(--navy-deep);}
+  .biz-grid{display:grid; grid-template-columns:1fr; max-width:720px;}
+  .biz-copy{
+    background:var(--navy-deep);
+    color:var(--cream);
+    padding:28px;
+    border:4px solid var(--navy);
+    box-shadow:8px 8px 0 var(--shadow);
+  }
+  .biz-copy .eyebrow{color:var(--cyan) !important;}
+  .biz-copy h2{font-size:0.8rem; margin-bottom:18px; color:var(--yellow);}
+  .biz-copy p{color:var(--silver); margin-bottom:16px; font-size:1.2rem;}
+
+  /* ---------- LEADERSHIP ---------- */
+  .leadership{background:var(--cream); color:var(--navy);}
+  .lead-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  @media(max-width:840px){.lead-grid{grid-template-columns:1fr; gap:28px;}}
+  .lead-grid h2{font-size:0.8rem; margin-bottom:18px; color:var(--purple);}
+  .lead-grid .eyebrow{color:var(--red);}
+  .lead-intro{
+    font-size:1.2rem; color:var(--gray);
+    background:var(--navy);
+    color:var(--silver);
+    padding:20px;
+    border:4px solid var(--purple);
+    box-shadow:4px 4px 0 var(--gray);
+  }
+  .trait-list{list-style:none;}
+  .trait-list li{
+    display:flex; gap:12px; padding:14px 0;
+    border-bottom:2px dashed var(--line);
+    align-items:flex-start;
+  }
+  .trait-list li:last-child{border-bottom:none;}
+  .trait-list .tag{
+    color:var(--red); min-width:120px; font-size:0.42rem;
+    background:var(--navy); color:var(--yellow);
+    padding:6px 8px; border:2px solid var(--navy-deep);
+    flex-shrink:0;
+  }
+  .trait-list p{font-size:1.15rem; color:var(--gray);}
+
+  /* ---------- LIFE OUTSIDE ---------- */
+  .life{background:var(--purple); color:var(--cream);}
+  .life .wrap{max-width:720px;}
+  .life .eyebrow{color:var(--pink) !important;}
+  .life h2{font-size:0.8rem; margin-bottom:20px; text-shadow:2px 2px 0 var(--shadow);}
+  .life-panel{
+    background:var(--navy-deep);
+    border:4px solid var(--pink);
+    padding:24px;
+    box-shadow:6px 6px 0 var(--shadow);
+  }
+  .life p{color:var(--silver); font-size:1.2rem; margin-bottom:16px;}
+
+  /* ---------- CONNECT ---------- */
+  .connect{background:var(--navy-deep); text-align:center;}
+  .connect .wrap{max-width:560px;}
+  .connect .eyebrow{color:var(--cyan);}
+  .connect h2{font-size:0.9rem; margin-bottom:18px; color:var(--yellow); text-shadow:2px 2px 0 var(--red);}
+  .connect > .wrap > p{color:var(--silver); margin-bottom:32px; font-size:1.2rem;}
+  .connect-links{
+    display:flex; flex-direction:column; gap:8px;
+    text-align:left;
+  }
+  .connect-links a{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 16px; text-decoration:none;
+    background:var(--navy);
+    border:4px solid var(--cyan);
+    color:var(--cream); font-size:1.1rem;
+    box-shadow:4px 4px 0 var(--shadow);
+  }
+  .connect-links a:hover{
+    background:var(--purple);
+    border-color:var(--yellow);
+    color:var(--yellow);
+    transform:translate(-2px,-2px);
+    box-shadow:6px 6px 0 var(--shadow);
+  }
+  .connect-links a:active{
+    transform:translate(4px,4px);
+    box-shadow:none;
+  }
+  .connect-links span.arrow{
+    font-family:'Press Start 2P',monospace;
+    font-size:0.45rem; color:var(--green);
+  }
+
+  footer{
+    background:var(--black);
+    color:var(--gray);
+    text-align:center;
+    padding:28px 0;
+    font-size:0.45rem;
+    border-top:4px solid var(--line);
+    font-family:'Press Start 2P',monospace;
+  }
+  footer::before{content:"★ "; color:var(--yellow);}
+  footer::after{content:" ★"; color:var(--yellow);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="mark"></span>OMAR.EXE</div>
+    <ul class="navlinks">
+      <li><a href="#story">STORY</a></li>
+      <li><a href="#stand">VALUES</a></li>
+      <li><a href="#business">BIZ</a></li>
+      <li><a href="#leadership">LEAD</a></li>
+      <li><a href="#connect">CONNECT</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-stars" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-sprite" aria-hidden="true">
+    <canvas id="compass" width="128" height="128"></canvas>
+    <div class="label">COMPASS.LVL99</div>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Faith · Leadership · People · Purpose</span>
+    <h1>I lead with conviction, <em>I listen with humility</em>, and I build with people who trust me to follow through.</h1>
+    <p class="lede">I'm Omar — a man of my word, a believer in people, and someone who takes responsibility seriously. I've spent my career building relationships that last and a life built on faith, family, and doing what I say I'll do.</p>
+    <div class="cta-row">
+      <a href="#story" class="btn btn-primary">▶ MY STORY</a>
+      <a href="#stand" class="btn btn-ghost">VALUES</a>
+      <a href="#connect" class="btn btn-ghost">CONNECT</a>
+    </div>
+  </div>
+</header>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <span class="eyebrow">My Story</span>
+      <h2>Grounded in faith.<br>Built by discipline.</h2>
+    </div>
+    <div class="story-copy">
+      <p>I was raised to believe that a man's word is worth something — that if you say you'll be there, you show up, and if you take something on, you see it through. That belief has shaped everything I've built, from my faith to my family to the way I do business.</p>
+      <p>I'm a God-fearing man before I'm anything else. That's not a label I wear loosely — it's the foundation everything else stands on. Faith taught me patience when I wanted to rush, humility when I wanted credit, and conviction when it would've been easier to fold.</p>
+      <div class="pull">"I believe there's good in everyone, and I believe everyone has a purpose — mine is to help people find theirs."</div>
+      <p>Professionally, I've built my career on trust. As a health and Medicare insurance broker, I don't sell people plans — I sit with them, understand their lives, and help them choose something that actually serves them. That approach has earned me a book of nearly 185 active clients who are still with me today, plan after plan, year after year. That's not luck. That's follow-through.</p>
+      <p>Outside of work, I manage two rental properties — a quiet, steady discipline that reflects how I think: long-term, responsible, and unwilling to cut corners. I'm still the same man at home as I am in a client meeting — respectful, dependable, and serious about becoming better every year.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stand" id="stand">
+  <div class="wrap">
+    <div class="stand-head">
+      <span class="eyebrow">What I Stand For</span>
+      <h2>Eight cornerstones. One foundation.</h2>
+    </div>
+    <div class="cornerstones">
+      <div class="cornerstone"><span class="num">I.</span><h3>Faith</h3><p>The foundation everything else is built on. It keeps me steady when things get hard and grateful when they go well.</p></div>
+      <div class="cornerstone"><span class="num">II.</span><h3>Family</h3><p>The reason I work hard in the first place, and the people who keep me honest about what actually matters.</p></div>
+      <div class="cornerstone"><span class="num">III.</span><h3>Honesty</h3><p>I'd rather tell someone a hard truth than a comfortable lie. Trust is built one honest conversation at a time.</p></div>
+      <div class="cornerstone"><span class="num">IV.</span><h3>Respect</h3><p>Every person I meet is carrying something I can't see. I try to treat them accordingly, no exceptions.</p></div>
+      <div class="cornerstone"><span class="num">V.</span><h3>Hard Work</h3><p>I don't believe in shortcuts. I believe in showing up, doing the work, and letting the results speak.</p></div>
+      <div class="cornerstone"><span class="num">VI.</span><h3>Leadership</h3><p>Leadership isn't a title — it's the willingness to take responsibility when things go wrong and share credit when they go right.</p></div>
+      <div class="cornerstone"><span class="num">VII.</span><h3>Purpose</h3><p>I believe every person is here for a reason. Part of my job — in business and in life — is helping people find theirs.</p></div>
+      <div class="cornerstone"><span class="num">VIII.</span><h3>Belief in People</h3><p>I choose to see the good in people first. It's earned me relationships that have lasted years, not transactions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="table-section">
+  <div class="wrap">
+    <div class="table-head">
+      <span class="eyebrow">What I Bring To The Table</span>
+      <h2>Not bullet points. A way of operating.</h2>
+    </div>
+    <div class="strengths">
+      <div class="strength"><span class="mark">+</span><p>I build trust with people — it's the first thing I work for in any relationship, business or personal.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I listen before I lead. I want to understand a situation fully before I try to move it forward.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I communicate clearly. No jargon, no runaround — just a straight answer.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I follow through. If I commit to something, consider it done.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I think long-term. I'd rather build something that lasts than win something that doesn't.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I take responsibility — for outcomes, for mistakes, and for the people counting on me.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I am disciplined. Consistency, not motivation, is what actually gets things done.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I understand sales and relationships — and the difference between closing a deal and earning a client for years.</p></div>
+      <div class="strength"><span class="mark">+</span><p>I believe leadership means serving people, not just directing them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="business" id="business">
+  <div class="wrap biz-grid">
+    <div class="biz-copy">
+      <span class="eyebrow">People &amp; Business</span>
+      <h2>Trust, measured over time.</h2>
+      <p>I've spent my career in health and Medicare insurance as a broker — an industry where trust isn't optional, it's the entire job. People come to me at some of the most confusing moments of their lives, trying to make sense of coverage that affects their health and their finances. I don't rush that conversation.</p>
+      <p>That approach has built a book of business of roughly 185 active clients — people who are still on plans I helped them choose, year after year. They stay because I show up, I follow through, and I tell them the truth even when it's not what they want to hear.</p>
+      <p>Alongside that, I own and manage two rental properties. It's a different kind of business, but the same mindset: long-term thinking, responsibility, and a refusal to cut corners.</p>
+    </div>
+  </div>
+</section>
+
+<section class="leadership" id="leadership">
+  <div class="wrap lead-grid">
+    <div>
+      <span class="eyebrow">Leadership Mindset</span>
+      <h2>Strategic. Decisive. Grounded.</h2>
+      <p class="lead-intro">I'm wired to see the bigger picture, make a decision, and move — that's simply how I'm built. I'd rather take responsibility and act than wait for permission or perfect conditions. But I've learned that leadership without humility just becomes noise. The kind of leadership I want to practice is the kind that helps people move forward, not the kind that makes them feel small.</p>
+    </div>
+    <ul class="trait-list">
+      <li><span class="tag">STR</span><p>I think several steps ahead — for my clients, my properties, and the people I'm responsible for.</p></li>
+      <li><span class="tag">DEX</span><p>I'd rather make a call and adjust than stall and lose momentum.</p></li>
+      <li><span class="tag">SPD</span><p>Plans matter, but action is what actually changes outcomes.</p></li>
+      <li><span class="tag">WIS</span><p>Confidence without humility is just noise. I try to stay teachable.</p></li>
+      <li><span class="tag">FTH</span><p>My convictions come before my ambitions — they keep the ambition honest.</p></li>
+      <li><span class="tag">CHR</span><p>Every strategy I build is in service of the people it's meant to help.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="life">
+  <div class="wrap">
+    <span class="eyebrow">Life Outside Business</span>
+    <h2>Work is what I do. Family is why I do it.</h2>
+    <div class="life-panel">
+      <p>None of this means much to me if it doesn't translate into showing up for the people I love. Family comes first — always has. I make time for the people who matter, and I try to be fully present when I'm with them, not half-checked-out thinking about the next client call.</p>
+      <p>My friendships matter to me too. I believe in loyalty — the kind that shows up in slow seasons, not just the good ones. I want the people around me to feel supported, valued, and genuinely enjoyed, not just tolerated.</p>
+      <p>At the end of the day, I want to be known less for what I built and more for how I made the people around me feel — respected, valued, and never alone.</p>
+    </div>
+  </div>
+</section>
+
+<section class="connect" id="connect">
+  <div class="wrap">
+    <span class="eyebrow">Connect</span>
+    <h2>Let's build something worth trusting.</h2>
+    <p>Whether it's a conversation, an opportunity, a referral, a partnership, or simply a connection worth making — I'd genuinely love to hear from you.</p>
+    <div class="connect-links">
+      <a href="mailto:omar.gonzalez@pursuit.com">EMAIL <span class="arrow">▶</span></a>
+      <a href="tel:+15555555555">PHONE <span class="arrow">▶</span></a>
+      <a href="#">LINKEDIN <span class="arrow">▶</span></a>
+      <a href="https://instagram.com/omar_powers">INSTAGRAM <span class="arrow">▶</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 OMAR — BUILT ON FAITH, FAMILY, AND FOLLOW-THROUGH
+</footer>
+
+<script>
+(function(){
+  const c = document.getElementById('compass');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  const W = 128, H = 128, cx = 64, cy = 64;
+  const colors = {
+    bg:'#0f1020', ring:'#83769c', north:'#29adff',
+    needle:'#ff004d', tip:'#00e436', center:'#fff1e8'
+  };
+  let angle = -Math.PI / 2;
+
+  function px(x,y,w,h,col){
+    ctx.fillStyle = col;
+    ctx.fillRect(Math.floor(x),Math.floor(y),w,h);
+  }
+
+  function draw(){
+    ctx.fillStyle = colors.bg;
+    ctx.fillRect(0,0,W,H);
+    for(let r=56;r<=60;r+=2){
+      for(let a=0;a<Math.PI*2;a+=0.05){
+        const x = cx + Math.cos(a)*r - 1;
+        const y = cy + Math.sin(a)*r - 1;
+        px(x,y,2,2,colors.ring);
+      }
+    }
+    for(let r=38;r<=40;r+=2){
+      for(let a=0;a<Math.PI*2;a+=0.08){
+        const x = cx + Math.cos(a)*r - 1;
+        const y = cy + Math.sin(a)*r - 1;
+        px(x,y,2,2,'#5d275d');
+      }
+    }
+    px(cx-1,8,2,10,colors.north);
+    px(cx-3,6,6,2,colors.north);
+    const nx = cx + Math.cos(angle)*40;
+    const ny = cy + Math.sin(angle)*40;
+    const steps = 20;
+    for(let i=0;i<steps;i++){
+      const t = i/steps;
+      const x = cx + (nx-cx)*t;
+      const y = cy + (ny-cy)*t;
+      px(x-2,y-2,4,4, i<steps*0.6 ? colors.needle : colors.tip);
+    }
+    px(cx-4,cy-4,8,8,colors.center);
+    px(cx-2,cy-2,4,4,colors.needle);
+  }
+
+  function tick(){
+    angle += 0.008;
+    draw();
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
