@@ -93,6 +93,14 @@ nav .wrap{
   display:inline-block;
   animation:blink 1.2s step-end infinite;
 }
+.brand .nav-profile-img{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border:2px solid var(--cream);
+  border-radius:50%;
+  margin-left:8px;
+}
 @keyframes blink{50%{opacity:0;}}
 .navlinks{display:flex; gap:8px; list-style:none; flex-wrap:wrap; justify-content:flex-end;}
 .navlinks a{
@@ -115,7 +123,7 @@ nav .wrap{
 .hero{
   background:var(--navy-deep);
   color:var(--cream);
-  padding:160px 0 80px;
+  padding:80px 0 48px;
   position:relative;
   overflow:hidden;
   border-bottom:4px solid var(--purple);
