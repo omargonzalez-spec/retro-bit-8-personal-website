@@ -331,22 +331,22 @@ nav .wrap{
 .life p{color:var(--silver); font-size:1.2rem; margin-bottom:16px;}
 
 /* ---------- CONNECT ---------- */
-.connect{background:var(--navy-deep); text-align:center; padding:48px 24px;}
-.connect .wrap{max-width:480px;}
+.connect{background:var(--navy-deep); text-align:center; padding:32px 24px;}
+.connect .wrap{max-width:400px;}
 .connect .eyebrow{color:var(--cyan);}
-.connect h2{font-size:1.8rem; margin-bottom:16px; color:var(--yellow); text-shadow:2px 2px 0 var(--red);}
-.connect > .wrap > p{color:var(--silver); margin-bottom:20px; font-size:1rem;}
+.connect h2{font-size:1.4rem; margin-bottom:12px; color:var(--yellow); text-shadow:2px 2px 0 var(--red);}
+.connect > .wrap > p{color:var(--silver); margin-bottom:16px; font-size:0.9rem;}
 .connect-links{
-  display:flex; flex-direction:column; gap:8px;
+  display:flex; flex-direction:column; gap:6px;
   text-align:left;
 }
 .connect-links a{
   display:flex; justify-content:space-between; align-items:center;
-  padding:10px 14px; text-decoration:none;
+  padding:8px 12px; text-decoration:none;
   background:var(--navy);
-  border:3px solid var(--cyan);
-  color:var(--cream); font-size:0.9rem;
-  box-shadow:3px 3px 0 var(--shadow);
+  border:2px solid var(--cyan);
+  color:var(--cream); font-size:0.85rem;
+  box-shadow:2px 2px 0 var(--shadow);
 }
 .connect-links a:hover{
   background:var(--purple);
