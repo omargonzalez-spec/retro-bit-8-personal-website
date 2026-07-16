@@ -22,7 +22,7 @@ body{
   background:var(--black);
   color:var(--cream);
   font-family:'VT323', monospace;
-  font-size:22px;
+  font-size:26px;
   line-height:1.45;
   image-rendering:pixelated;
   -webkit-font-smoothing:none;
